@@ -1,0 +1,38 @@
+{
+  "compileOnSave": false,
+  "exclude": [
+    "../node_modules"
+  ],
+  "compilerOptions": {
+    "sourceMap": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es6",
+    "types": ["node"],
+    "outDir": "../dist",
+    "typeRoots": [
+      "../node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "ESNext.BigInt",
+      "dom",
+      "esnext.asynciterable"
+    ],
+    "baseUrl": "",
+    "paths": {
+      "@/routes/*" :["routes/*"],
+      "@/models/*" :["server/models/*"],
+      "@/controllers/*" :["server/controllers/*"],
+      "@/controllers" :["server/controllers/"],
+      "@/types": ["types"],
+      "@/schema": ["schema"],
+      "@/tools": ["tools"]
+    }
+  }
+}
