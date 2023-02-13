@@ -1,0 +1,56 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    restart: always
+    env_file:
+      - ./.env
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+    container_name: educ-db
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+
+  app:
+    build: .
+    container_name: educ-app
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://${DB_USER}:${DB_PASS}@postgres:5432/db
+      NODE_ENV: development
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/dist
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    container_name: educ-pgadmin
+    logging:
+      driver: none
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "8888:80"
+    volumes:
+      - ./pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - db
+
+volumes:
+  dist:
+  node_modules:
+  pgdata:
+  pgadmin-data:

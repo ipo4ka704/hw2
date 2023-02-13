@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc -p src",
-    "start": "nodemon --exec babel-node src/www.ts --extensions \".ts\""
+    "start": "nodemon --exec babel-node src/www.ts --extensions \".ts\"",
+    "create": " babel-node scripts/create-tables.ts --extensions \".ts\""
   },
   "repository": {
     "type": "git",
@@ -48,6 +49,8 @@
     "express-joi-validation": "^5.0.1",
     "joi": "^17.7.0",
     "morgan": "^1.10.0",
-    "pg": "^8.8.0"
+    "perf_hooks": "^0.0.1",
+    "pg": "^8.8.0",
+    "winston": "^3.8.2"
   }
 }

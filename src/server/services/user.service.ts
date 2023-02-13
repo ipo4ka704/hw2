@@ -1,7 +1,7 @@
 import { Op } from 'sequelize';
 import { v1 as uuid } from 'uuid';
 
-import { IUser, UserModel } from '../models/User.model';
+import { IUser, UserModel } from '../models/user.model';
 
 export class userService {
     public static async getAllUsers(

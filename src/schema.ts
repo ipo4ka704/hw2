@@ -1,5 +1,5 @@
 import * as Joi from 'joi';
-import {IUser} from "./server/models/User.model";
+import {IUser} from "./server/models/user.model";
 
 const dataSchema: Joi.ObjectSchema<IUser> = Joi.object({
     login: Joi.string().required(),

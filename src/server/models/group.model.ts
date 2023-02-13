@@ -21,7 +21,7 @@ export interface IGroup {
   permission: Array<Permission>;
 }
 
-@Table({ tableName: 'users' })
+@Table({ tableName: 'group' })
 
 export class GroupModel extends Model<GroupModel> {
   @PrimaryKey

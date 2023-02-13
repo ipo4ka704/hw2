@@ -1,7 +1,7 @@
 import {Sequelize} from "sequelize-typescript";
-import { UserModel } from '../models/User.model';
-import { UserGroupModel } from '../models/UserGroup.model';
-import { GroupModel } from '../models/Group.model';
+import { UserModel } from '../models/user.model';
+import { UserGroupModel } from '../models/userGroup.model';
+import { GroupModel } from '../models/group.model';
 import config  from '../config/config';
 export const sequelize = new Sequelize({
     dialect: 'postgres',

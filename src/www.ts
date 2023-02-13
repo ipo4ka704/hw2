@@ -7,7 +7,7 @@ import app from './index';
 import * as dotenv from 'dotenv';
 dotenv.config();
 const port = +(process.env.PORT || '3007');
-app.set('port', port);
+app.set('port', '3007');
 
 const server = http.createServer(app);
 

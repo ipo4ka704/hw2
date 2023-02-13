@@ -1,9 +1,9 @@
 import { Transaction } from 'sequelize';
 import { v1 as uuid } from 'uuid';
 
-import { GroupModel } from '../models/Group.model';
-import { UserModel } from '../models/User.model';
-import { UserGroupModel } from '../models/UserGroup.model';
+import { GroupModel } from '../models/group.model';
+import { UserModel } from '../models/user.model';
+import { UserGroupModel } from '../models/userGroup.model';
 import { sequelize } from '../config/sequelize';
 
 export class UserGroupService {

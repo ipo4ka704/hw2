@@ -1,9 +1,9 @@
 import { v1 as uuid } from 'uuid';
 import { Transaction } from 'sequelize';
-import { UserGroupModel } from '../models/UserGroup.model'
+import { UserGroupModel } from '../models/userGroup.model'
 import { sequelize } from '../config/sequelize';
 
-import { IGroup, GroupModel } from '../models/Group.model';
+import { IGroup, GroupModel } from '../models/group.model';
 
 export class groupService {
     public static async getAllGroups(): Promise<GroupModel[]> {

@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import { Request, Response, NextFunction } from 'express';
 
-import { IUserGroup } from '../models/UserGroup.model';
+import { IUserGroup } from '../models/userGroup.model';
 
 const userGroupSchema = Joi.object({
     userIds: Joi.array().unique().items(Joi.string()).required(),
