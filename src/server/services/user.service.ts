@@ -69,4 +69,17 @@ export class userService {
             }
         ).then(([rowsUpdated, [user]]) => user);
     }
+
+    public static getUserByCredentials(login: string, password: string): Promise<UserModel | null> {
+        try {
+            return UserModel.findOne({
+                where: {
+                    login,
+                    password,
+                },
+            });
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
 }

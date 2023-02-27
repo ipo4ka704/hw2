@@ -1,3 +1,4 @@
+
 import { sequelize } from '../src/server/config/sequelize';
 import { UserModel, IUser } from '../src/server/models/user.model';
 import { GroupModel, IGroup, Permission } from '../src/server/models/group.model';
@@ -14,9 +15,7 @@ sequelize
                 const user = new UserModel(userData);
                 return user.save();
             })
-        ).then(() => {
-            sequelize.close();
-        });
+        );
     })
     .then(() => {
         return GroupModel.sync({ force: true });
@@ -119,4 +118,3 @@ const groups: IGroup[] = [
         permissions: [Permission.Write, Permission.UploadFiles, Permission.Delete]
     }
 ];
-

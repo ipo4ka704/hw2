@@ -4,6 +4,7 @@ WORKDIR /app
 COPY ./package.json /app/
 COPY . /app/
 RUN npm install
+RUN #npm run create
 ENV NODE_ENV docker
-EXPOSE 3000
-CMD [ "npm", "run", "start" ]
+EXPOSE 3007
+CMD [ "npm", "run", "create" ]

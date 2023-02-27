@@ -1,35 +1,36 @@
 version: '3.8'
 services:
   db:
+    container_name: educ-db
     image: postgres
-    restart: always
-    env_file:
-      - ./.env
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASS}
       - POSTGRES_DB=${DB_NAME}
-    container_name: educ-db
     volumes:
       - ./pgdata:/var/lib/postgresql/data
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
-
+    ports:
+      - "5432:5432"
+    restart: always
   app:
     build: .
     container_name: educ-app
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgres://${DB_USER}:${DB_PASS}@postgres:5432/db
+      DATABASE_URL: postgresql://${DB_HOST}:${DB_PORT}@${DB_USER}/${DB_NAME}
       NODE_ENV: development
-      PORT: 3000
+      PORT: 3007
+      DOCKER_IP: '127.0.0.1'
     ports:
-      - "3000:3000"
+      - "3007:3007"
     volumes:
       - .:/app
       - /app/node_modules
-      - /app/dist
+      - /app/src
+      - /app/scripts
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
 
@@ -50,7 +51,6 @@ services:
       - db
 
 volumes:
-  dist:
+  src:
   node_modules:
-  pgdata:
   pgadmin-data:

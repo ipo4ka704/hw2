@@ -14,5 +14,7 @@ export default {
         name: process.env.DB_NAME,
         user: process.env.DB_USER,
         password: process.env.DB_PASS
-    }
+    },
+
+    jwtSecret: process.env.SECRET_KEY || (Math.random() * 1000000).toString(),
 };
